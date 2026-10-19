@@ -81,6 +81,7 @@ SMBIOS bilgilerini oluşturmak için [GenSMBIOS](https://github.com/corpnewt/Gen
 3. Önce **CMIO güncelle**, işlem tamamlanınca **Kamerayı eşle** düğmesini kullanın.
 4. macOS'un istediği uzantı izinlerini ve yeniden başlatmayı tamamlayın.
 5. Photo Booth'ta **G870 Quanta — Canlı** kamerasını seçip görüntüyü kontrol edin.
+6. Photo Booth'ta kameranın siyah gözükmesine aldanmayın fotoğraf çekin.
 
 Kamerayı Quanta USB `0408:209d` modülünde kullandım. EFI tek başına bu kamera çözümünü kurmuyor; uygulamanın içindeki CMIO ve DriverKit uzantıları da gerekiyor. Uygulama ad-hoc imzalı olduğu için temiz sistemde ek kurulum engelleri çıkabilir; farklı kamera modüllerini henüz test etmedim.
 
