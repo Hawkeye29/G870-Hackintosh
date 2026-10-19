@@ -25,6 +25,19 @@ Casper Excalibur G870.1362-BV70X-C bilgisayarıma macOS Sequoia 15.8.1 (24H32) k
 
 Bu liste kendi bilgisayarımda kullandığım sistemin durumunu anlatıyor. Paketi farklı bir G870 varyantında veya başka bir bilgisayarda temiz kurulum yaparak henüz test etmedim. Aynı G870 adı altında kamera, Wi-Fi kartı veya başka donanımlar farklı olabilir.
 
+## Klavye ve touchpad için kullandığım kext'ler
+
+Klavye ve touchpad desteğini EFI içinde yapılandırdım. Kullandığım dosyalar `EFI/OC/Kexts` altında; aşağıdaki girdiler `config.plist > Kernel > Add` bölümünde etkin.
+
+| Aygıt / görev | Kullandığım kext'ler |
+|---|---|
+| PS/2 klavye | `VoodooPS2Controller.kext` ve içindeki `VoodooPS2Keyboard.kext` |
+| I2C touchpad | `VoodooI2C.kext` ve `VoodooI2CHID.kext` |
+| Girdi ve I2C yardımcıları | `VoodooInput.kext`, `VoodooGPIO.kext` ve `VoodooI2CServices.kext` |
+| G870 I2C denetleyici eşleştirmesi | `G870-I2C-51E8.kext` |
+
+`VoodooPS2Keyboard`, `VoodooGPIO` ve `VoodooInput` girdileri ilgili ana kext'in içindeki `Contents/PlugIns` konumlarından yüklenmek üzere ayarlı. `G870-I2C-51E8.kext` ise Intel `8086:51E8` denetleyicisini VoodooI2C ile eşleştiren, ayrı çalıştırılabilir dosyası olmayan bir yapılandırma kext'i. Kendi cihazımda klavye ve touchpad'i bu EFI ile kullanıyorum; farklı G870 donanımlarında aynı sonucu henüz doğrulamadım.
+
 ## Ekran kartı hakkında
 
 **Intel dahili GPU hızlandırması bende çalışmıyor.** `WhateverGreen.kext` EFI'de mevcut ve etkin; ancak bu dosyanın bulunması Intel GPU hızlandırmasının çalıştığı anlamına gelmiyor.

@@ -19,6 +19,30 @@ RTX 5070 için sürücü kurulumunu 1401 üzerinden yaptım.
 Paketi başka bilgisayarda veya farklı bir G870 varyantında temiz kurulum
 yaparak henüz test etmedim. Donanım farklılıklarını kontrol edin.
 
+KLAVYE VE TOUCHPAD İÇİN KULLANDIĞIM KEXT'LER
+
+Klavye ve touchpad desteğini EFI içinde yapılandırdım. Aşağıdaki girdiler
+config.plist > Kernel > Add bölümünde etkin; dosyalar EFI/OC/Kexts altında.
+
+PS/2 klavye:
+- VoodooPS2Controller.kext
+- Ana kext içindeki VoodooPS2Keyboard.kext
+
+I2C touchpad ve yardımcı bileşenler:
+- VoodooI2C.kext
+- VoodooI2CHID.kext
+- VoodooInput.kext
+- VoodooGPIO.kext
+- VoodooI2CServices.kext
+- G870-I2C-51E8.kext
+
+VoodooPS2Keyboard, VoodooGPIO ve VoodooInput girdileri ilgili ana kext'in
+Contents/PlugIns konumlarından yüklenmek üzere ayarlı. G870-I2C-51E8.kext,
+Intel 8086:51E8 I2C denetleyicisini VoodooI2C ile eşleştiren bir yapılandırma
+kext'i; içinde ayrı çalıştırılabilir dosya bulunmuyor. Kendi bilgisayarımda
+klavye ve touchpad'i bu EFI ile kullanıyorum. Farklı G870 donanımlarında
+aynı sonucu henüz doğrulamadım.
+
 2. USB HAZIRLAMA
 
 Windows'ta USB hazırlamak için kullandığım proje:
