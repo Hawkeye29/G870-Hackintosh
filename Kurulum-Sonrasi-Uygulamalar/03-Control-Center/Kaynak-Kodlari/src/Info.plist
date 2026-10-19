@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleExecutable</key>
+	<string>G870Bridge</string>
+	<key>CFBundleIdentifier</key>
+	<string>local.g870.G870Bridge</string>
+	<key>CFBundleName</key>
+	<string>G870Bridge</string>
+	<key>CFBundlePackageType</key>
+	<string>KEXT</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.8.0</string>
+	<key>CFBundleVersion</key>
+	<string>0.8.0</string>
+	<key>IOKitPersonalities</key>
+	<dict>
+		<key>G870 GWMI</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>local.g870.G870Bridge</string>
+			<key>IOClass</key>
+			<string>G870Bridge</string>
+			<key>IONameMatch</key>
+			<string>PNP0C14</string>
+			<key>IOPropertyMatch</key>
+			<dict>
+				<key>_UID</key>
+				<string>0x1</string>
+			</dict>
+			<key>IOProviderClass</key>
+			<string>IOACPIPlatformDevice</string>
+			<key>IOUserClientClass</key>
+			<string>G870Client</string>
+		</dict>
+	</dict>
+	<key>OSBundleLibraries</key>
+	<dict>
+		<key>com.apple.iokit.IOACPIFamily</key>
+		<string>1.4</string>
+		<key>com.apple.kpi.bsd</key>
+		<string>8.0.0</string>
+		<key>com.apple.kpi.iokit</key>
+		<string>8.0.0</string>
+		<key>com.apple.kpi.libkern</key>
+		<string>8.0.0</string>
+		<key>com.apple.kpi.mach</key>
+		<string>8.0.0</string>
+	</dict>
+	<key>OSBundleRequired</key>
+	<string>Local-Root</string>
+</dict>
+</plist>

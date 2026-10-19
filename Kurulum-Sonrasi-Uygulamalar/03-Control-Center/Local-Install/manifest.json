@@ -1,0 +1,11 @@
+{
+  "G870Bridge.kext/Contents/Info.plist": "9fc12f9ee4e13273d2623b964ff603bda4b62838d25ae08d1516694dd1fc9b8e",
+  "G870Bridge.kext/Contents/MacOS/G870Bridge": "0bcba98e766c4b381f56165352800535370d0c91cab5f894f68af7b765ff571c",
+  "G870ControlCenter.app/Contents/Info.plist": "8b5904bb5da884edfd32995925fff8c9cfe00fac0d275472bc02cacc87a5bddd",
+  "G870ControlCenter.app/Contents/MacOS/G870Monitor": "d9060e282df823a8a186c7cb31ccb19c4cd1f7ff84f6cdb249241e8bc8118911",
+  "G870ControlCenter.app/Contents/_CodeSignature/CodeResources": "6686de10a28a2fe11b36cbb86dcbacc827cfc4ea116b4dabf1845e5aee629e9b",
+  "SSDT-G870-RGB.aml": "c08a423a9ec66775753fc748647b043ef6315bc1ea0f9cc71ff40684e9db366d",
+  "entries.json": "49b13b295d4d873487b5493fdbf2033eb4c920e83bcfb7c301b8d5fa545372ed",
+  "g870ctl": "22f912ef91cb5a41159a8540d9ec9d44f4c07fb0d3fee31f5a3df42648346096",
+  "user-session.sh": "5e42b0e3403041e418fe7e0fdbcea6e0ae13c14fc58611560d66b2d70ecd2b45"
+}

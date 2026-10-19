@@ -1,0 +1,17 @@
+{
+  "Kernel": {
+    "Arch": "x86_64",
+    "BundlePath": "G870Bridge.kext",
+    "Comment": "G870 diagnostic bridge; no hardware controls on startup",
+    "Enabled": true,
+    "ExecutablePath": "Contents/MacOS/G870Bridge",
+    "MaxKernel": "24.99.99",
+    "MinKernel": "24.0.0",
+    "PlistPath": "Contents/Info.plist"
+  },
+  "ACPI": {
+    "Comment": "G870 keyboard RGB with bounded acknowledgement waits",
+    "Enabled": true,
+    "Path": "SSDT-G870-RGB.aml"
+  }
+}

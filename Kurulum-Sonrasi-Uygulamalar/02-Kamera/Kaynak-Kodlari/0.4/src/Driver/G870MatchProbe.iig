@@ -1,0 +1,16 @@
+// G870 activation-only development probe; does not capture video.
+
+#ifndef G870MatchProbe_h
+#define G870MatchProbe_h
+
+#include <Availability.h>
+#include <DriverKit/IOService.iig>
+
+class G870MatchProbe: public IOService
+{
+public:
+    virtual kern_return_t
+    Start(IOService * provider) override;
+};
+
+#endif /* G870MatchProbe_h */

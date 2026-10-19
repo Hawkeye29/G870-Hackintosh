@@ -1,0 +1,30 @@
+G870 Quanta — sürekli görüntü denemesi 0.4.0
+
+0.3 raporunda gerçek 640x480 JPEG alımı ve CMIO gönderimi doğrulandı. 0.3 tek kare alıp USB'yi kapatıyor ve aynı sabit kareyi tekrar gösteriyordu. Bu sürüm, uygulama kamerayı kullanırken USB akışını açık tutar ve her yeni tamamlanmış MJPEG karesini çözerek CMIO'ya gönderir. Hedef 640x480 / 30fps'tir. Gerçek donanımda sürekli çalışma süresi ve elde edilen fps henüz doğrulanmadı.
+
+KURULUM
+1. Kamera uygulamalarını ve G870 uygulamasını kapatın. Geri dönüş için çalışan 0.3 ZIP'ini saklayın.
+2. Yeni G870 Kamera Prototip.app dosyasını /Applications (Uygulamalar) klasöründeki eski aynı adlı uygulamanın yerine koyun. ZIP içinden veya başka kopyadan çalıştırmayın. Build.command çalıştırmanız gerekmiyor.
+3. Uygulamayı Uygulamalar'dan açın. CMIO güncelle düğmesine basın ve tamamlandı sonucunu bekleyin. Ardından Kamerayı eşle düğmesini kullanın ve sonucu bekleyin. Hata olursa devam etmek yerine raporu gönderin.
+4. İki güncelleme de tamamlanınca bir kez yeniden başlatın.
+5. Photo Booth → Kamera → G870 Quanta — Canlı seçin. Elinizi hareket ettirerek görüntünün gerçekten yenilendiğini kontrol edin; 1–2 dakika açık tutun. Sonra kapatıp tekrar açarak ikinci akışı kontrol edin.
+6. Uygulamada Raporu kaydet ile g870-canli-0.4.txt dosyasını kaydedin. Görüntü durursa veya listeye gelmezse paket içindeki Tani-Raporu.command dosyasını çalıştırıp oluşan g870-04-canli-tani-*.txt dosyasını gönderin. Fotoğraf/video göndermeniz gerekmez.
+
+AKIŞ DEĞİŞİKLİKLERİ
+- 48 bayt PROBE/COMMIT ve çalışan Quanta eşleşmesi korunmuştur.
+- Dört adet 256 mikroçerçeveli USB okuması önceden sıraya konur. Her tampon 32ms USB süresini kapsar; sürekli sıraya ekleme ile seri okumalardaki boşluklar azaltılır.
+- USB zamanına geç kalan istekler (IsoTooOld) için en fazla üç zamanlama denemesi yapılır. Beklenmeyen IsoTooNew hatasında mevcut okumalarla çakışabilecek yeni bir zamanlama yapmak yerine akış kapatılır. Hasarlı/eksik kareler atlanır.
+- MJPEG kareleri USB işçisinden ayrı çözülür. En fazla iki çözme/gönderme işi bekleyebilir; geride kalırsa yeni kare düşürülür, bellek ve gecikme kuyruğu büyütülmez.
+- Sabit kare tekrar oynatma zamanlayıcısı yoktur. Yeni USB karesi olmadan yeni görüntü gönderilmez.
+- Son istemci kamerayı kapatınca USB okumaları iptal edilir, completion'lar beklenir, alt0'a dönülür ve arayüz kapatılır. Kuyrukta beklerken iptal edilmiş yeni bir oturum USB'yi yeniden başlatmaz.
+- USB completion 3 saniye gelmezse veya 8 saniye tam MJPEG kare oluşmazsa akış durur ve raporlanır. Otomatik sonsuz yeniden başlatma yoktur; kamera uygulamasını kapatıp açmak yeni oturum başlatır.
+- İptal completion'ları 3 saniyede tamamlanmazsa ilgili tamponlar süreç sonuna kadar tutulur ve o süreçte yeni akış engellenir. Böyle bir durumda yeniden başlatma gerekebilir.
+- Her 5 saniyede LIVE USB frames ve LIVE CMIO sent sayaçları raporlanır. Bunlar farklı şeyleri sayar: USB tam MJPEG çerçeveleri ve CMIO'ya gönderilen çözülmüş çerçeveler. İlk kayıt LIVE FIRST FRAME SENT şeklindedir.
+
+GERİ DÖNÜŞ
+Kamera uygulamalarını kapatın. G870 uygulamasındaki Eşleşmeyi kaldır düğmesini kullanın; önce DriverKit eşleşmesi, başarılı tamamlanırsa CMIO kaldırılır. Yeniden başlatma istenirse uygulayın ve kalan kaldırmayı tamamlayın. 0.3'e dönmek için bundan sonra 0.3 uygulamasını Uygulamalar'a koyup önce CMIO, sonra kamera eşleşmesini kurarak yeniden başlatın. 0.3 eski yüksek sürümün üzerine doğrudan güncellemeyi kabul etmez; önce 0.4 kaldırılmalıdır.
+
+EFI, boot-args, NVRAM, SIP, ses, Wi-Fi ve parlaklık dosyaları değiştirilmez. Kamera görüntüleri diske yazılmaz ve ağa gönderilmez. Kamerayı kullanmayan uygulamalarda yakalama başlatılmaz; CMIO istemcisi akış başlattığında fiziksel yakalama yapılır.
+
+DOĞRULAMA VE SINIRLAR
+Çalışan 0.3 ile iki DriverKit personality'nin tamamı aynı tutuldu; yalnız bundle sürümü değişti. Derleme ve ad hoc yerel imza kontrolleri yapıldı. 10.000 ardışık USB zamanlama rezervasyonu, gecikmiş saatten toparlanma, 1.000 ardışık MJPEG karesinin tüketilmesi ve paket kaybından toparlanma testleri AddressSanitizer/UndefinedBehaviorSanitizer ile geçti. Mevcut descriptor/bozuk MJPEG testleri de korunmuştur. Oturum iptal mantığı ayrı sınandı. Bu testler gerçek USB aygıtında sürekli akış ve uyku/uyanma testi yerine geçmez. Bu sürümün canlı donanım testi henüz yapılmadı.
