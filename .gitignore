@@ -1,0 +1,9 @@
+.DS_Store
+._*
+__MACOSX/
+EFI/OC/config.plist.backup-*
+*.log
+*.crash
+
+# Do not add stale local package archives by mistake
+*.zip
