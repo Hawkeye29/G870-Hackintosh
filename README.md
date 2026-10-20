@@ -106,3 +106,8 @@ Bu depoda kendi cihazım için bir araya getirdiğim yapılandırmayı ve araçl
 Kamera ve Control Center kaynaklarını ilgili `Kaynak-Kodlari` klasörlerine ekledim. Kaynak kodun bulunması, depodaki bütün bileşenlerin tek bir lisans altında olduğu anlamına gelmiyor.
 
 Apple bu donanımda macOS kurulumunu desteklemiyor. Burada paylaştığım durum, kendi G870 bilgisayarımda yaptığım kurulumun sonucu.
+
+
+## Katkılar
+
+Bu proje, OpenAI Codex desteğinden yararlanılarak geliştirilmiştir.
